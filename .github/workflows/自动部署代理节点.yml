@@ -10,7 +10,7 @@ on:
         type: choice
         options:
           - ws直连
-          - xhttp直连
+          - ss直连
           - Argo隧道CDN
       region:
         description: '选择部署区域'
@@ -224,8 +224,8 @@ jobs:
         else
           if [ "${{ github.event.inputs.type }}" = "ws直连" ]; then
             echo "DOCKER_IMAGE=ghcr.io/eooce/ws:latest" >> $GITHUB_ENV
-          elif [ "${{ github.event.inputs.type }}" = "xhttp直连" ]; then
-            echo "DOCKER_IMAGE=ghcr.io/eooce/goxhttp:latest" >> $GITHUB_ENV
+          elif [ "${{ github.event.inputs.type }}" = "ss直连" ]; then
+            echo "DOCKER_IMAGE=ghcr.io/mzhangxy/ssws:latest" >> $GITHUB_ENV
           else 
             echo "DOCKER_IMAGE=ghcr.io/eooce/nodejs:main" >> $GITHUB_ENV
           fi
@@ -289,8 +289,8 @@ jobs:
           done < .env
         fi
 
-        # 如果 DOCKER_IMAGE 中否包含 xhttp、goxhttp、ws 等关键词说明为直连镜像
-        if [[ "${{ env.DOCKER_IMAGE }}" =~ (xhttp|goxhttp|ws) ]]; then
+        # 如果 DOCKER_IMAGE 中否包含 xhttp、ss、ws 等关键词说明为直连镜像
+        if [[ "${{ env.DOCKER_IMAGE }}" =~ (xhttp|ss|ws) ]]; then
           # 获取应用路由
           ROUTE=$(cf app ${{ env.APP_NAME }} | grep "routes:" | awk '{print $2}')
           if [ -n "$ROUTE" ]; then
