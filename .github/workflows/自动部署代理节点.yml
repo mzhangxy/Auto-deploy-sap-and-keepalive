@@ -225,7 +225,7 @@ jobs:
           if [ "${{ github.event.inputs.type }}" = "ws直连" ]; then
             echo "DOCKER_IMAGE=ghcr.io/eooce/ws:latest" >> $GITHUB_ENV
           elif [ "${{ github.event.inputs.type }}" = "ss直连" ]; then
-            echo "DOCKER_IMAGE=ghcr.io/mzhangxy/ssws:latest" >> $GITHUB_ENV
+            echo "DOCKER_IMAGE=ghcr.io/mzhangxy/wsss:latest" >> $GITHUB_ENV
           else 
             echo "DOCKER_IMAGE=ghcr.io/eooce/nodejs:main" >> $GITHUB_ENV
           fi
