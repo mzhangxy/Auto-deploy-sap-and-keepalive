@@ -86,6 +86,7 @@ jobs:
         echo "区域 SG 中所有应用的最终状态:"
         cf apps
 
+  """
   restart-us-apps:
     runs-on: ubuntu-latest
     name: Restart US Apps
@@ -165,3 +166,4 @@ jobs:
       run: |
         echo "区域 US 中所有应用的最终状态:"
         cf apps
+    """
