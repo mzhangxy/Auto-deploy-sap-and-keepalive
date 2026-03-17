@@ -59,7 +59,7 @@ on:
         default: ''
 
 env:
-  MEMORY: 3072M
+  MEMORY: 2048M
   DISK: 300M
 
 jobs:
